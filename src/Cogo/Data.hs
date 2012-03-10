@@ -200,10 +200,10 @@ isAlive g allPieces bs =
   -- enough space next to it to give it a neighbouring piece
   or $ map canHaveNeighbour $ groupPieces g
   where
-    -- only position that are close enough to be neighbours are
+    -- only positions that are close enough to be neighbours are
     -- checked to reduce computation
     canHaveNeighbour p = or $ map (constraints p) (allClosePositions p)
-    -- there are two constraint an eligible neighbour position has
+    -- there are two constraints an eligible neighbour position has
     -- to fulfill:
     --  1) it needs to be at least as close as 1 unit to the piece
     --  2) it may not overlap with other pieces on the board
@@ -212,7 +212,7 @@ isAlive g allPieces bs =
       piecesConnected pos p &&
         (and $ map (noOverlap pos) (allClosePieces p))
     
-    -- two pieces overlap if there distance is less than 2r
+    -- two pieces overlap if their distance is less than 2r
     noOverlap p1 p2 = piecesDistance p1 p2 >= 2*radius
     
     -- All positions that could possibly be neighbours of p.
@@ -225,7 +225,7 @@ isAlive g allPieces bs =
         pr = precision :: Int
         xs = filter inside [x0 - pr .. x0 + pr]
         ys = filter inside [y0 - pr .. y0 + pr]
-        inside x = x > 0 && x < round (bs * precision)
+        inside x = x > 0 && x < floor (bs * precision)
       in
         [MkPiece x y | x <- xs, y <- ys]
 
