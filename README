@@ -1,0 +1,9 @@
+Dependencies other than the Haskell platform:
+  wx
+  bool-extras
+  simple-observer
+  utility-ht
+
+Compiling and running:
+  $ make
+  $ build/cogo &
