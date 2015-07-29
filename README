@@ -1,3 +1,8 @@
+COGO is a continous version of the game GO.
+Instead of putting pieces on the intersections of a grid, pieces can move around freely.
+A piece is considered captured if it cannot move in any direction by at least a piece diameter without colliding with another piece.
+Note that this, opposed to traditional GO, makes friendly fire possible.
+
 Dependencies other than the Haskell platform:
   wx
   bool-extras
